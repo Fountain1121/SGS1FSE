@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    {% if error %}
+      <h3 class="error">Submission error</h3>
+      <p>{{ error }}</p>
+      <a class="btn" href="{{ url_for('section_b') }}">Back to Section B</a>
+    {% elif success %}
+      <h3>Success</h3>
+      <p>{{ success }}</p>
+      <a class="btn" href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+    {% endif %}
+  </div>
+{% endblock %}

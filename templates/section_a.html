@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <h2>Section A — Multiple Choice (30 Questions)</h2>
+    <p>Each change is saved automatically.</p>
+    <form id="section-a-form">
+      {% for q in questions %}
+        <div class="question-block" data-qid="{{ q.id }}">
+          <div class="qnum">Q{{ q.id }}.</div>
+          <div class="qtext">{{ q.question }}</div>
+          <div class="options">
+            <label><input type="radio" name="q{{ q.id }}" value="A" {% if saved.get(q.id) == 'A' %}checked{% endif %}> A. {{ q.opt_a }}</label>
+            <label><input type="radio" name="q{{ q.id }}" value="B" {% if saved.get(q.id) == 'B' %}checked{% endif %}> B. {{ q.opt_b }}</label>
+            <label><input type="radio" name="q{{ q.id }}" value="C" {% if saved.get(q.id) == 'C' %}checked{% endif %}> C. {{ q.opt_c }}</label>
+            <label><input type="radio" name="q{{ q.id }}" value="D" {% if saved.get(q.id) == 'D' %}checked{% endif %}> D. {{ q.opt_d }}</label>
+          </div>
+        </div>
+      {% endfor %}
+    </form>
+    <div id="save-status" class="save-status"></div>
+    <a class="btn" href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+  </div>
+{% endblock %}

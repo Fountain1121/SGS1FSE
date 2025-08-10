@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card login-card">
+    <h2>Student Login</h2>
+    {% if error %}
+      <div class="error">{{ error }}</div>
+    {% endif %}
+    <form method="post" action="/">
+      <label>Student ID
+        <input type="text" name="student_id" required />
+      </label>
+      <label>Exam Password
+        <input type="password" name="password" required />
+      </label>
+      <button type="submit">Start Exam</button>
+    </form>
+    <p>Use your Student ID and the global password to start.</p>
+  </div>
+{% endblock %}

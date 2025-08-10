@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <h2>Section B — Essay Questions</h2>
+    {% if questions|length == 0 %}
+      <p><em>No Section B questions loaded yet. Provide the 7 essay questions and I'll insert them.</em></p>
+    {% endif %}
+    <form id="section-b-form" method="post" action="{{ url_for('submit') }}">
+      {% for q in questions %}
+        <div class="question-block" data-qid="{{ q.id }}">
+          <div class="qnum">Q{{ q.id }}.</div>
+          <div class="qtext">{{ q.question }}</div>
+          <textarea name="q{{ q.id }}" rows="6" placeholder="Type your essay answer here...">{% if saved.get(q.id) %}{{ saved.get(q.id) }}{% endif %}</textarea>
+          <div class="hint">Q1 is compulsory. Choose any other 3 to answer (total 4 answers).</div>
+        </div>
+      {% endfor %}
+      <div class="form-actions">
+        <button class="btn submit" type="submit">Submit Exam</button>
+        <a class="btn" href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

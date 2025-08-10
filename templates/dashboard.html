@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <h2>Welcome, {{ student_id }}</h2>
+    <p>Use the links below to navigate between sections freely. Your answers are saved automatically.</p>
+    <div class="nav-buttons">
+      <a class="btn" href="{{ url_for('section_a') }}">Section A — Multiple Choice</a>
+      <a class="btn" href="{{ url_for('section_b') }}">Section B — Essay</a>
+    </div>
+    <form method="post" action="{{ url_for('submit') }}">
+      <button class="btn submit" type="submit">Submit Exam</button>
+    </form>
+  </div>
+{% endblock %}
